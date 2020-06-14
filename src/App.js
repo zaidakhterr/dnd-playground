@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
 
-function App() {
+import React from "react";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "./ItemTypes";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Card text="Card 1" />
     </div>
   );
-}
+};
+
+const Card = ({ text }) => {
+  const [, drag] = useDrag({ item: { type: ItemTypes.CARD } });
+  return (
+    <div
+      ref={drag}
+      className="card"
+      style={{
+        width: 200,
+        height: 300,
+        textAlign: "center",
+        textTransform: "uppercase",
+        padding: 20,
+        margin: 20,
+        backgroundColor: "#f5f5f5",
+        border: "1px solid #d9d9d9",
+        borderRadius: 5,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <h3>{text}</h3>
+    </div>
+  );
+};
 
 export default App;
