@@ -22,17 +22,6 @@ const Card = ({ id, top, left, text }) => {
       style={{
         width: 200,
         height: 100,
-        textAlign: "center",
-        textTransform: "uppercase",
-        padding: 20,
-        backgroundColor: "#f5f5f5",
-        border: "1px solid #d9d9d9",
-        borderRadius: 5,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "absolute",
-        cursor: "move",
         top,
         left,
       }}

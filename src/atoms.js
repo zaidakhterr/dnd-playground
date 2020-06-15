@@ -1,9 +1,10 @@
 import { atom } from "recoil";
+import { v4 as uuid } from "uuid";
 
 export const cardsState = atom({
   key: "cardsState",
   default: {
-    a: { top: 10, left: 10, text: "Card 1" },
-    b: { top: 200, left: 300, text: "Card 2" },
+    [uuid()]: { top: 10, left: 10, text: "Card 1" },
+    [uuid()]: { top: 120, left: 10, text: "Card 2" },
   },
 });
