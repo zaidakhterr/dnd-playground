@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import update from "immutability-helper";
 
@@ -16,8 +16,8 @@ const App = () => {
 
 const Container = ({ hideSourceOnDrag }) => {
   const [cards, setCards] = useState({
-    "0": { top: 10, left: 10, text: "Card 1" },
-    "1": { top: 200, left: 300, text: "Card 2" },
+    a: { top: 10, left: 10, text: "Card 1" },
+    b: { top: 200, left: 300, text: "Card 2" },
   });
 
   const [, drop] = useDrop({
@@ -61,7 +61,7 @@ const Container = ({ hideSourceOnDrag }) => {
   );
 };
 
-const Card = ({ id, top, left, text, hideSourceOnDrag }) => {
+const Card = memo(({ id, top, left, text, hideSourceOnDrag }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { id, left, top, type: ItemTypes.CARD },
     collect: (monitor) => ({
@@ -98,6 +98,6 @@ const Card = ({ id, top, left, text, hideSourceOnDrag }) => {
       <h3>{text}</h3>
     </div>
   );
-};
+});
 
 export default App;
