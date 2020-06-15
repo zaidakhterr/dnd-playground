@@ -1,10 +1,12 @@
 import "./App.scss";
 
-import React, { useState, memo } from "react";
+import React, { memo } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import update from "immutability-helper";
+import { useRecoilState } from "recoil";
 
 import { ItemTypes } from "./ItemTypes";
+import { cardsState } from "./atoms";
 
 const App = () => {
   return (
@@ -15,10 +17,7 @@ const App = () => {
 };
 
 const Container = ({ hideSourceOnDrag }) => {
-  const [cards, setCards] = useState({
-    a: { top: 10, left: 10, text: "Card 1" },
-    b: { top: 200, left: 300, text: "Card 2" },
-  });
+  const [cards, setCards] = useRecoilState(cardsState);
 
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
