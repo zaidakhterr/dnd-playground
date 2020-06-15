@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 
 import { ItemTypes } from "../ItemTypes";
 
-const Card = ({ id, top, left, text, hideSourceOnDrag }) => {
+const Card = ({ id, top, left, text }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { id, left, top, type: ItemTypes.CARD },
     collect: (monitor) => ({
@@ -11,7 +11,7 @@ const Card = ({ id, top, left, text, hideSourceOnDrag }) => {
     }),
   });
 
-  if (isDragging && hideSourceOnDrag) {
+  if (isDragging) {
     return <div ref={drag} />;
   }
 

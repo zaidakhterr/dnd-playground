@@ -7,7 +7,7 @@ import { ItemTypes } from "../ItemTypes";
 import { cardsState } from "../atoms";
 import Card from "./card";
 
-const Container = ({ hideSourceOnDrag }) => {
+const Container = () => {
   const [cards, setCards] = useRecoilState(cardsState);
 
   const [, drop] = useDrop({
@@ -45,7 +45,7 @@ const Container = ({ hideSourceOnDrag }) => {
     >
       {Object.keys(cards).map((key) => {
         const props = cards[key];
-        return <Card id={key} hideSourceOnDrag={hideSourceOnDrag} {...props} />;
+        return <Card id={key} {...props} />;
       })}
     </div>
   );
