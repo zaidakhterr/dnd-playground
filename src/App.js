@@ -9,22 +9,37 @@ import { ItemTypes } from "./ItemTypes";
 const App = () => {
   return (
     <div className="app">
-      <Container />
+      <Container hideSourceOnDrag={true} />
     </div>
   );
 };
 
-const Container = () => {
-  const [cards, setCards] = useState([0, 1]);
+const Container = ({ hideSourceOnDrag }) => {
+  const [cards, setCards] = useState({
+    "0": { top: 10, left: 10, text: "Card 1" },
+    "1": { top: 200, left: 300, text: "Card 2" },
+  });
 
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop(item, monitor) {
       const delta = monitor.getDifferenceFromInitialOffset();
-      console.log("DROP", item, delta);
+      const left = Math.round(item.left + delta.x);
+      const top = Math.round(item.top + delta.y);
+      move(item.id, left, top);
       return undefined;
     },
   });
+
+  const move = (id, left, top) => {
+    setCards(
+      update(cards, {
+        [id]: {
+          $merge: { top, left },
+        },
+      })
+    );
+  };
 
   return (
     <div
@@ -38,42 +53,23 @@ const Container = () => {
         position: "relative",
       }}
     >
-      {cards.map((id) => (
-        <Card key={id} id={id} topi={10 * id} lefti={40 * id} />
-      ))}
+      {Object.keys(cards).map((key) => {
+        const props = cards[key];
+        return <Card id={key} hideSourceOnDrag={hideSourceOnDrag} {...props} />;
+      })}
     </div>
   );
 };
 
-const Card = ({ id, topi, lefti }) => {
-  const [top, setTop] = useState(topi);
-  const [left, setLeft] = useState(lefti);
-  const [text, setText] = useState("CARD");
-
-  const [{ please, isDragging }, drag] = useDrag({
+const Card = ({ id, top, left, text, hideSourceOnDrag }) => {
+  const [{ isDragging }, drag] = useDrag({
     item: { id, left, top, type: ItemTypes.CARD },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
-      please: monitor.getDifferenceFromInitialOffset(),
     }),
-    end: (item, monitor) => {
-      const delta = monitor.getDifferenceFromInitialOffset();
-      console.log(delta);
-      const top = Math.round(item.top + delta.y);
-      const left = Math.round(item.left + delta.x);
-      move(top, left);
-      return undefined;
-    },
   });
 
-  console.log({ please });
-
-  const move = (newTop, newLeft) => {
-    setTop(newTop);
-    setLeft(newLeft);
-  };
-
-  if (isDragging) {
+  if (isDragging && hideSourceOnDrag) {
     return <div ref={drag} />;
   }
 
