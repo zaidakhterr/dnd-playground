@@ -1,1 +1,29 @@
+// HomePage Styles
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  nav {
+    a {
+      padding: 5px 20px;
+      font-size: 1.5rem;
+      border-radius: 8px;
+      line-height: 1.5rem;
+
+      &:hover {
+        text-decoration: none;
+        background-color: #e5f1ff;
+      }
+    }
+  }
+}
+
+// MoveAroundPage Styles

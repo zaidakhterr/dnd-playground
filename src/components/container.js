@@ -32,17 +32,7 @@ const Container = () => {
   };
 
   return (
-    <div
-      ref={drop}
-      style={{
-        width: "calc(100vw - 40px)",
-        height: "calc(100vh - 40px)",
-        margin: 20,
-        border: "2px solid #222",
-        borderRadius: 3,
-        position: "relative",
-      }}
-    >
+    <div className="container" ref={drop}>
       {Object.keys(cards).map((key) => {
         const props = cards[key];
         return <Card id={key} {...props} />;
