@@ -22,22 +22,9 @@ const Container = () => {
     drop(item, monitor) {
       const delta = monitor.getDifferenceFromInitialOffset();
       console.log("DROP", item, delta);
-      // const top = Math.round(item.top + delta.y);
-      // const left = Math.round(item.left + delta.x);
-      // move(item.id, left, top);
       return undefined;
     },
   });
-
-  const move = (id, top, left) => {
-    setCards(
-      update(cards, {
-        [id]: {
-          $merge: { top, left },
-        },
-      })
-    );
-  };
 
   return (
     <div
@@ -61,7 +48,7 @@ const Container = () => {
 const Card = ({ id, topi, lefti }) => {
   const [top, setTop] = useState(topi);
   const [left, setLeft] = useState(lefti);
-  const [text, setText] = useState("hi");
+  const [text, setText] = useState("CARD");
 
   const [{ please, isDragging }, drag] = useDrag({
     item: { id, left, top, type: ItemTypes.CARD },
@@ -86,9 +73,9 @@ const Card = ({ id, topi, lefti }) => {
     setLeft(newLeft);
   };
 
-  // if (isDragging) {
-  //   return <div ref={drag} />;
-  // }
+  if (isDragging) {
+    return <div ref={drag} />;
+  }
 
   return (
     <div
