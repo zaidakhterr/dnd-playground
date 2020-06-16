@@ -31,7 +31,7 @@
 .move {
   padding: 20px;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
@@ -69,19 +69,32 @@
         flex-direction: column;
         margin: 5px 0;
 
+        label {
+          margin-bottom: 5px;
+        }
+
         &-sub {
+          border: solid 1px #999;
+          border-radius: 2px;
+          padding: 10px;
           width: 100%;
           display: flex;
           justify-content: space-between;
 
           &-sub {
-            width: calc(50% - 10px);
+            width: 50%;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
+
+            label {
+              margin: 0;
+              padding-left: 2px;
+              font-size: 0.8rem;
+            }
 
             input {
-              width: calc(100% - 16px);
+              width: 90%;
             }
           }
         }
@@ -110,9 +123,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
+      "b"
       "a"
       "a"
-      "a"
-      "b";
+      "a";
   }
 }

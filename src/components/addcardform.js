@@ -7,8 +7,10 @@ import { cardsState } from "../atoms";
 
 const AddCardForm = () => {
   const [text, setText] = useState("");
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [left, setLeft] = useState(0);
+  const [top, setTop] = useState(0);
+  const [width, setWidth] = useState(100);
+  const [height, setHeight] = useState(100);
   const [cards, setCards] = useRecoilState(cardsState);
 
   const addCard = (e) => {
@@ -16,13 +18,15 @@ const AddCardForm = () => {
     setCards(
       update(cards, {
         [uuid()]: {
-          $set: { top: y, left: x, text },
+          $set: { top, left, text, width, height },
         },
       })
     );
     setText("");
-    setX(0);
-    setY(0);
+    setTop(0);
+    setLeft(0);
+    setWidth(100);
+    setHeight(100);
   };
 
   return (
@@ -46,12 +50,12 @@ const AddCardForm = () => {
           <label>Position</label>
           <div className="form-group-sub">
             <div className="form-group-sub-sub">
-              <label htmlFor="x">X:</label>
+              <label htmlFor="x">X</label>
               <input
                 autoComplete="off"
-                value={x}
+                value={left}
                 onChange={(e) => {
-                  setX(Number(e.target.value));
+                  setLeft(Number(e.target.value));
                 }}
                 type="text"
                 id="x"
@@ -59,12 +63,43 @@ const AddCardForm = () => {
               />
             </div>
             <div className="form-group-sub-sub">
-              <label htmlFor="y">Y:</label>
+              <label htmlFor="y">Y</label>
               <input
                 autoComplete="off"
-                value={y}
+                value={top}
                 onChange={(e) => {
-                  setY(Number(e.target.value));
+                  setTop(Number(e.target.value));
+                }}
+                type="text"
+                id="y"
+                name="y"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="form-group">
+          <label>Size</label>
+          <div className="form-group-sub">
+            <div className="form-group-sub-sub">
+              <label htmlFor="x">Width</label>
+              <input
+                autoComplete="off"
+                value={width}
+                onChange={(e) => {
+                  setWidth(Number(e.target.value));
+                }}
+                type="text"
+                id="x"
+                name="x"
+              />
+            </div>
+            <div className="form-group-sub-sub">
+              <label htmlFor="y">Height</label>
+              <input
+                autoComplete="off"
+                value={height}
+                onChange={(e) => {
+                  setTop(Number(e.target.value));
                 }}
                 type="text"
                 id="y"

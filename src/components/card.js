@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 
 import { ItemTypes } from "../ItemTypes";
 
-const Card = ({ id, top, left, text }) => {
+const Card = ({ id, top, left, width, height, text }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { id, left, top, type: ItemTypes.CARD },
     collect: (monitor) => ({
@@ -20,13 +20,13 @@ const Card = ({ id, top, left, text }) => {
       ref={drag}
       className="card"
       style={{
-        width: 200,
-        height: 100,
+        width,
+        height,
         top,
         left,
       }}
     >
-      <h3>{text}</h3>
+      <h4>{text}</h4>
     </div>
   );
 };
