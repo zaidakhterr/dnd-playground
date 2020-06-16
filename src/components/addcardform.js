@@ -20,6 +20,9 @@ const AddCardForm = () => {
         },
       })
     );
+    setText("");
+    setX(0);
+    setY(0);
   };
 
   return (
@@ -29,6 +32,7 @@ const AddCardForm = () => {
         <div className="form-group">
           <label htmlFor="text">Text</label>
           <input
+            autoComplete="off"
             value={text}
             onChange={(e) => {
               setText(e.target.value);
@@ -40,10 +44,11 @@ const AddCardForm = () => {
         </div>
         <div className="form-group">
           <label>Position</label>
-          <div className="sub-form-group">
-            <div className="form-group">
-              <label htmlFor="x">X</label>
+          <div className="form-group-sub">
+            <div className="form-group-sub-sub">
+              <label htmlFor="x">X:</label>
               <input
+                autoComplete="off"
                 value={x}
                 onChange={(e) => {
                   setX(Number(e.target.value));
@@ -53,9 +58,10 @@ const AddCardForm = () => {
                 name="x"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="y">Y</label>
+            <div className="form-group-sub-sub">
+              <label htmlFor="y">Y:</label>
               <input
+                autoComplete="off"
                 value={y}
                 onChange={(e) => {
                   setY(Number(e.target.value));

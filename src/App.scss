@@ -51,8 +51,42 @@
     width: 100%;
     height: fit-content;
     border-radius: 2px;
-    border: 2px solid #999;
+    border: 2px solid #222;
     padding: 10px;
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      button {
+        margin: 10px 0;
+      }
+
+      .form-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 5px 0;
+
+        &-sub {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          &-sub {
+            width: calc(50% - 10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+              width: calc(100% - 16px);
+            }
+          }
+        }
+      }
+    }
   }
 
   .card {

@@ -31,3 +31,30 @@ a {
     text-decoration: underline;
   }
 }
+
+button {
+  cursor: pointer;
+  padding: 5px 20px;
+  border: 1px solid #0070f3;
+  color: #0070f3;
+  border-radius: 2px;
+  background-color: #fff;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #e5f1ff;
+  }
+}
+
+input {
+  padding: 2px 5px;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+label {
+  font-weight: 500;
+}
