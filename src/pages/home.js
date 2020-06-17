@@ -8,6 +8,7 @@ const HomePage = () => {
       <nav>
         <Link to="/drag-around">Drag Around</Link>
         <Link to="/file-drop">File Drop</Link>
+        <Link to="/tower-of-hanoi">Tower Of Hanoi</Link>
       </nav>
     </div>
   );
