@@ -6,7 +6,8 @@ const HomePage = () => {
     <div className="home">
       <h1>Drag n Drop Playground!</h1>
       <nav>
-        <Link to="/move-around">Move Around</Link>
+        <Link to="/drag-around">Drag Around</Link>
+        <Link to="/file-drop">File Drop</Link>
       </nav>
     </div>
   );

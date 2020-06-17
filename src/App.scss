@@ -8,15 +8,22 @@
 
   h1 {
     font-size: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     a {
+      width: 100%;
+      text-align: center;
       padding: 5px 20px;
       font-size: 1.5rem;
       border-radius: 8px;
       line-height: 1.5rem;
+      margin: 10px;
 
       &:hover {
         text-decoration: none;
