@@ -8,3 +8,8 @@ export const cardsState = atom({
     [uuid()]: { top: 120, left: 10, height: 80, width: 120, text: "Card 2" },
   },
 });
+
+export const filesState = atom({
+  key: "filesState",
+  default: [],
+});
