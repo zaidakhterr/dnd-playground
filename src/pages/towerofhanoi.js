@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 
 import { towerOfHanoi, towerOfHanoiMoves } from "../atoms";
 import Tower from "../components/tower";
+import DragLayer from "../components/draglayer";
 
 const TowerOfHanoi = () => {
   const towers = useRecoilValue(towerOfHanoi);
@@ -14,6 +15,7 @@ const TowerOfHanoi = () => {
     <div className="tower-of-hanoi">
       <h1>Tower of Hanoi</h1>
       <p>Moves : {moves}</p>
+      <DragLayer />
       <div className="towers">
         {Object.keys(towers).map((key) => (
           <Tower key={key} id={key} />
