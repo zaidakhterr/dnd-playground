@@ -25,15 +25,19 @@ const Ring = ({ id, towerId }) => {
     setTowers(update(towers, { $merge: { [towerId]: newTower } }));
   };
 
+  const tower = [...towers[towerId]];
+  const canDrag = tower[tower.length - 1] === id;
+
   if (isDragging) {
     return <div ref={drag} />;
   }
 
   return (
     <div
-      ref={drag}
+      ref={canDrag ? drag : null}
       className="ring"
       style={{
+        cursor: canDrag ? "move" : "not-allowed",
         width: `calc(100% / ${3 / id} - 20px)`,
         backgroundColor: id === 1 ? "56a8eb" : id === 2 ? "#eb56be" : "#86e46f",
       }}
