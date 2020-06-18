@@ -47,6 +47,12 @@ button {
   &:hover {
     background-color: #e5f1ff;
   }
+
+  &.lg {
+    padding: 10px 40px;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
 }
 
 input {
