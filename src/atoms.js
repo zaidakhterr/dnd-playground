@@ -13,3 +13,8 @@ export const filesState = atom({
   key: "filesState",
   default: [],
 });
+
+export const towerOfHanoi = atom({
+  key: "towerOfHanoi",
+  default: [[3, 2, 1], [], []],
+});
