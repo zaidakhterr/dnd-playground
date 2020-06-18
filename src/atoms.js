@@ -16,5 +16,5 @@ export const filesState = atom({
 
 export const towerOfHanoi = atom({
   key: "towerOfHanoi",
-  default: [[3, 2, 1], [], []],
+  default: { "1": [3, 2, 1], "2": [], "3": [] },
 });

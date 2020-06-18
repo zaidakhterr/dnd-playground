@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 
-import Ring from "../components/ring";
 import { towerOfHanoi } from "../atoms";
 import Tower from "../components/tower";
 
@@ -11,8 +10,8 @@ const TowerOfHanoi = () => {
     <div className="tower-of-hanoi">
       <h1>Tower of Hanoi</h1>
       <div className="towers">
-        {towers.map((tower) => (
-          <Tower tower={tower} />
+        {Object.keys(towers).map((key) => (
+          <Tower key={key} id={key} tower={towers[key]} />
         ))}
       </div>
     </div>
