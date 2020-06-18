@@ -1,32 +1,24 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useRecoilState } from "recoil";
-import update from "immutability-helper";
+import { useRecoilValue } from "recoil";
 
 import { towerOfHanoi } from "../atoms";
 import { ItemTypes } from "../ItemTypes";
 
 const Ring = ({ id, towerId }) => {
-  const [towers, setTowers] = useRecoilState(towerOfHanoi);
+  const towers = useRecoilValue(towerOfHanoi);
 
-  const [{ isDragging }, drag] = useDrag({
-    item: { id, type: ItemTypes.RING },
+  const [{ canDrag, isDragging }, drag] = useDrag({
+    item: { id, towerId, type: ItemTypes.RING },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
+      canDrag: monitor.canDrag(),
     }),
-    begin: () => {
-      handleDrag();
+    canDrag: () => {
+      const tower = [...towers[towerId]];
+      return tower[tower.length - 1] === id;
     },
   });
-
-  const handleDrag = () => {
-    const newTower = [...towers[towerId]];
-    newTower.pop();
-    setTowers(update(towers, { $merge: { [towerId]: newTower } }));
-  };
-
-  const tower = [...towers[towerId]];
-  const canDrag = tower[tower.length - 1] === id;
 
   if (isDragging) {
     return <div ref={drag} />;
@@ -34,7 +26,7 @@ const Ring = ({ id, towerId }) => {
 
   return (
     <div
-      ref={canDrag ? drag : null}
+      ref={drag}
       className="ring"
       style={{
         cursor: canDrag ? "move" : "not-allowed",

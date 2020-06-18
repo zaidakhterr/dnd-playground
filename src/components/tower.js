@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { useRecoilState } from "recoil";
 import update from "immutability-helper";
@@ -13,15 +13,28 @@ const Tower = ({ id }) => {
   const [, drop] = useDrop({
     accept: ItemTypes.RING,
     drop: (item) => {
-      handleDrop(item.id);
+      handleDrop(item.id, item.towerId);
+      console.log(item);
+    },
+    canDrop: (item) => {
+      if (towers[id].length === 0) return true;
+      return towers[id][towers[id].length - 1] > item.id;
     },
   });
 
-  const handleDrop = (itemId) => {
+  const handleDrop = (itemId, towerId) => {
     const newTower = [...towers[id]];
     newTower.push(itemId);
-    setTowers(update(towers, { $merge: { [id]: newTower } }));
+
+    const newPrevTower = [...towers[towerId]];
+    newPrevTower.pop();
+
+    setTowers(update(towers, { $merge: { [id]: newTower, [towerId]: newPrevTower } }));
   };
+
+  useEffect(() => {
+    console.log(towers);
+  }, [towers]);
 
   return (
     <div ref={drop} className="tower">
