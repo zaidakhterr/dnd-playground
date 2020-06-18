@@ -1,14 +1,15 @@
-import React, { memo, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDrop } from "react-dnd";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import update from "immutability-helper";
 
-import { towerOfHanoi } from "../atoms";
+import { towerOfHanoi, towerOfHanoiMoves } from "../atoms";
 import { ItemTypes } from "../ItemTypes";
 import Ring from "./ring";
 
 const Tower = ({ id }) => {
   const [towers, setTowers] = useRecoilState(towerOfHanoi);
+  const setMoves = useSetRecoilState(towerOfHanoiMoves);
 
   const [, drop] = useDrop({
     accept: ItemTypes.RING,
@@ -30,6 +31,8 @@ const Tower = ({ id }) => {
     newPrevTower.pop();
 
     setTowers(update(towers, { $merge: { [id]: newTower, [towerId]: newPrevTower } }));
+
+    setMoves((n) => n + 1);
   };
 
   useEffect(() => {

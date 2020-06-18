@@ -18,3 +18,8 @@ export const towerOfHanoi = atom({
   key: "towerOfHanoi",
   default: { "1": [3, 2, 1], "2": [], "3": [] },
 });
+
+export const towerOfHanoiMoves = atom({
+  key: "towerOfHanoiMoves",
+  default: 0,
+});
