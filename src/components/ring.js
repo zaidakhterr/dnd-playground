@@ -20,7 +20,7 @@ const Ring = ({ id }) => {
       ref={drag}
       className="ring"
       style={{
-        width: 100 * id,
+        width: `calc(100% / ${3 / id} - 20px)`,
         backgroundColor: id === 1 ? "56a8eb" : id === 2 ? "#eb56be" : "#86e46f",
       }}
     >
