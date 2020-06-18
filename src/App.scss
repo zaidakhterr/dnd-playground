@@ -175,17 +175,20 @@
   padding: 20px;
 
   .tower {
-    .ring {
-      cursor: move;
-      height: 100px;
-      border: solid 1px #000;
-      border-radius: 5px;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 90px;
-      background-color: #56a8eb;
-    }
+    width: 300px;
+    height: 400px;
+  }
+
+  .ring {
+    cursor: move;
+    height: 100px;
+    border: solid 1px #000;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 90px;
+    background-color: #56a8eb;
   }
 }
 
