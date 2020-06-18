@@ -11,7 +11,7 @@ const TowerOfHanoi = () => {
       <h1>Tower of Hanoi</h1>
       <div className="towers">
         {Object.keys(towers).map((key) => (
-          <Tower key={key} id={key} tower={towers[key]} />
+          <Tower key={key} id={key} />
         ))}
       </div>
     </div>

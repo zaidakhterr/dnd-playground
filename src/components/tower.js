@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useDrop } from "react-dnd";
 import { useRecoilState } from "recoil";
 import update from "immutability-helper";
@@ -7,8 +7,15 @@ import { towerOfHanoi } from "../atoms";
 import { ItemTypes } from "../ItemTypes";
 import Ring from "./ring";
 
-const Tower = ({ tower, id }) => {
+const Tower = ({ id }) => {
   const [towers, setTowers] = useRecoilState(towerOfHanoi);
+
+  const [, drop] = useDrop({
+    accept: ItemTypes.RING,
+    drop: (item) => {
+      handleDrop(item.id);
+    },
+  });
 
   const handleDrop = (itemId) => {
     const newTower = [...towers[id]];
@@ -16,20 +23,13 @@ const Tower = ({ tower, id }) => {
     setTowers(update(towers, { $merge: { [id]: newTower } }));
   };
 
-  const [, drop] = useDrop({
-    accept: ItemTypes.RING,
-    drop: (item, monitor) => {
-      handleDrop(item.id);
-    },
-  });
-
   return (
     <div ref={drop} className="tower">
-      {tower.map((ring) => (
-        <Ring id={ring} />
+      {towers[id].map((ring) => (
+        <Ring id={ring} towerId={id} />
       ))}
     </div>
   );
 };
 
-export default Tower;
+export default memo(Tower);
