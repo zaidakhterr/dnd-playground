@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { useDrop } from "react-dnd";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import update from "immutability-helper";
@@ -7,7 +7,7 @@ import { towerOfHanoi, towerOfHanoiMoves } from "../atoms";
 import { ItemTypes } from "../ItemTypes";
 import Ring from "./ring";
 
-const Tower = ({ id }) => {
+const Tower = memo(({ id }) => {
   const [towers, setTowers] = useRecoilState(towerOfHanoi);
   const setMoves = useSetRecoilState(towerOfHanoiMoves);
 
@@ -46,6 +46,6 @@ const Tower = ({ id }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Tower;

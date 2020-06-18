@@ -196,11 +196,12 @@
 
   .towers {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     .tower {
       margin: 10px;
       width: 100%;
+      max-width: 400px;
       height: 400px;
       display: flex;
       flex-direction: column-reverse;
@@ -212,7 +213,7 @@
         content: "";
         height: 100%;
         width: 20px;
-        background-color: #000;
+        background-color: #222;
         border-radius: 5px 5px 0 0;
         position: absolute;
         z-index: -1;
@@ -222,7 +223,7 @@
         content: "";
         width: 100%;
         height: 20px;
-        background-color: #000;
+        background-color: #222;
         border-radius: 5px;
         position: absolute;
         z-index: -1;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 
@@ -48,7 +48,7 @@ const DraggableRing = ({ id, tower, towerId }) => {
   );
 };
 
-export const RingPreview = ({ id }) => {
+export const RingPreview = memo(({ id }) => {
   const [width, setWidth] = useState(30);
   useEffect(() => {
     let container = document.getElementsByClassName("tower")[0];
@@ -65,6 +65,6 @@ export const RingPreview = ({ id }) => {
       <Ring id={id} />
     </div>
   );
-};
+});
 
 export default DraggableRing;
