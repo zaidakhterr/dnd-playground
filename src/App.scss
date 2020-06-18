@@ -34,7 +34,6 @@
 }
 
 // MoveAroundPage Styles
-
 .move {
   padding: 20px;
   min-height: 100vh;
@@ -137,7 +136,7 @@
   }
 }
 
-// File Drop Page Styles
+// FileDropPage Styles
 .drop {
   padding: 20px;
 
@@ -150,10 +149,6 @@
     text-align: center;
     border: 2px solid #444;
     border-radius: 5px;
-
-    #file-upload-button {
-      visibility: hidden;
-    }
   }
 
   .file-list {
@@ -171,6 +166,25 @@
           }
         }
       }
+    }
+  }
+}
+
+// TowerOfHanoi Styles
+.tower-of-hanoi {
+  padding: 20px;
+
+  .tower {
+    .ring {
+      cursor: move;
+      height: 100px;
+      border: solid 1px #000;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 90px;
+      background-color: #56a8eb;
     }
   }
 }
