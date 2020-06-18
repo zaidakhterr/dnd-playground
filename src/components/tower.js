@@ -39,10 +39,10 @@ const Tower = ({ id }) => {
   return (
     <div ref={drop} className="tower">
       {towers[id].map((ring) => (
-        <Ring id={ring} towerId={id} />
+        <Ring id={ring} towerId={id} tower={towers[id]} />
       ))}
     </div>
   );
 };
 
-export default memo(Tower);
+export default Tower;

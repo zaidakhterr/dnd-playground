@@ -14,6 +14,7 @@ const TowerOfHanoi = () => {
           <Tower key={key} id={key} />
         ))}
       </div>
+      {towers["3"].length === 3 && <div className="win">Yayy! You Won</div>}
     </div>
   );
 };
